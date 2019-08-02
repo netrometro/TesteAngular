@@ -1,4 +1,6 @@
 <p-menubar [model]="items">
-  <input type="text" pInputText placeholder="Search"> 
-  <button pButton label="Logout" icon="fa fa-sign-out"></button>
+  <input pInputText [(ngModel)]="username" type="text" placeholder="username"> . 
+  <button pButton (click)="login()" label="Login" icon="fa fa-sign-out"></button>
 </p-menubar>
+
+<router-outlet></router-outlet>

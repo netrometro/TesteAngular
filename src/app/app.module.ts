@@ -7,14 +7,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 
 import { AppComponent } from './app.component';
-import { Page1Component } from './page1/page1.component';
-import { Page2Component } from './page2/page2.component';
-import { Page3Component } from './page3/page3.component';
-import { Page4Component } from './page4/page4.component';
+
+import { AppRoutingModule } from './app.routing.module';
+import { AuthService } from './auth.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, MenubarModule, InputTextModule, ButtonModule ],
-  declarations: [ AppComponent, Page1Component, Page2Component, Page3Component, Page4Component ],
-  bootstrap:    [ AppComponent ]
+  imports:      [ BrowserModule, FormsModule, MenubarModule, InputTextModule, ButtonModule, AppRoutingModule ],
+  declarations: [ AppComponent ],
+  bootstrap:    [ AppComponent ],
+  providers:    [ AuthService, AuthGuard ]
 })
 export class AppModule { }
