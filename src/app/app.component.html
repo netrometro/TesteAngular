@@ -4,3 +4,9 @@
 </p-menubar>
 
 <router-outlet></router-outlet>
+
+<ul>
+  <li class="text" *ngFor="let item of itens | async">
+    {{ item.matricula }}
+  </li>
+</ul>
