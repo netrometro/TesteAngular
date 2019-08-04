@@ -16,3 +16,11 @@
 </div>
 
 <p><button pButton (click)="update()" label="UPDATE" icon="fa fa-sign-out"></button></p>
+
+<ul>
+  <li *ngFor="let u of users2 | async">
+    {{ u | json }}
+  </li>
+</ul>
+
+<p><button pButton (click)="add()" label="ADD" icon="fa fa-sign-out"></button></p>

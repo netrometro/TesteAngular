@@ -25,6 +25,7 @@ export class AppComponent  {
 
   users: Observable<User[]>;
   user: Observable<User>;
+  users2: Observable<User[]>;
 
   constructor(
     private authService: AuthService,
@@ -32,6 +33,7 @@ export class AppComponent  {
 
     this.users = appService.listUsers();
     this.user = appService.getUser('9pAKGMFu9agPAKCtVHrp');
+    this.users2 = appService.listUsers2();
   }
 
   ngOnInit() {
@@ -42,6 +44,15 @@ export class AppComponent  {
       { label: 'Page 3', routerLink: ['/page3'] },
       { label: 'Page 4', routerLink: ['/page4'] },
     ];
+  }
+
+  add() {
+    let u = {
+      matricula: '333333333',
+      realizacao: new Date().toUTCString(),
+      idade: 25
+    }
+    this.appService.add(u);
   }
 
   update() {
