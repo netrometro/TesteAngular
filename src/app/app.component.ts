@@ -1,10 +1,16 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 import { MenuItem } from 'primeng/api';
 
 import { AuthService } from './auth.service';
+import { AppService } from './app.service';
+
+export interface User {
+  matricula: string;
+  realizacao: string;
+  idade: number;
+}
 
 @Component({
   selector: 'my-app',
@@ -13,15 +19,17 @@ import { AuthService } from './auth.service';
 })
 export class AppComponent  {
 
-  itens: Observable<any[]>;
+  users: Observable<User[]>;
 
   items: MenuItem[];
+
   username: string;
 
   constructor(
     private authService: AuthService,
-    private db: AngularFirestore) {
-      this.itens = this.db.collection('individuos').valueChanges();
+    private appService: AppService) {
+
+    this.users = appService.listUsers();
   }
 
   ngOnInit() {
