@@ -19,17 +19,19 @@ export interface User {
 })
 export class AppComponent  {
 
-  users: Observable<User[]>;
+  username: string;
 
   items: MenuItem[];
 
-  username: string;
+  users: Observable<User[]>;
+  user: Observable<User>;
 
   constructor(
     private authService: AuthService,
     private appService: AppService) {
 
     this.users = appService.listUsers();
+    this.user = appService.getUser('9pAKGMFu9agPAKCtVHrp');
   }
 
   ngOnInit() {
@@ -40,6 +42,15 @@ export class AppComponent  {
       { label: 'Page 3', routerLink: ['/page3'] },
       { label: 'Page 4', routerLink: ['/page4'] },
     ];
+  }
+
+  update() {
+    let u = {
+      matricula: '000000000',
+      realizacao: new Date().toUTCString(),
+      idade: 99
+    }
+    this.appService.update(u);
   }
 
   login() {
